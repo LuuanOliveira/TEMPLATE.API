@@ -1,0 +1,16 @@
+.flexrow {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex !important;
+}
+
+.flexrow > div {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    padding: 15px;
+}
+
+label, input, textarea {
+    display: block;
+}

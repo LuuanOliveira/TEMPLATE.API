@@ -1,0 +1,69 @@
+﻿@model List<Template.Domain.Models.Clientes.Cliente>
+
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="@Url.Content("~/css/cliente.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/bootstrap-grid.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/bootstrap-reboot.min.css")" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="row flexrow">
+        <div class="col-sm-12">
+            <h2 style="color: #ff9634; width: 100%; text-align: center">Dados do Cliente</h2>
+        </div>
+    </div>
+
+    <form>
+        @foreach (var cliente in Model)
+        {
+            <div class="row flexrow mt-2">
+                <div class="col-sm-12">
+                    <label class="form-label" for="id">Id:</label>
+                    <input class="form-control" id="id" type="text" value="@cliente.Id" disabled readonly />
+                </div>
+            </div>
+            <div class="row flexrow mt-12">
+                <div class="col-sm-4">
+                    <label class="form-label" for="nome">Nome:</label>
+                    <input class="form-control" id="nome" type="text" value="@cliente.Nome" disabled readonly />
+                </div>
+            </div>
+            <div class="row flexrow mt-12">
+                <div class="col-sm-4">
+                    <label class="form-label" for="email">E-mail:</label>
+                    <input class="form-control" id="email" type="text" value="@cliente.Email.Endereco" disabled readonly />
+                </div>
+            </div>
+            <div class="row flexrow mt-12">
+                <div class="col-sm-4">
+                    <label class="form-label" for="cpf">CPF:</label>
+                    <input class="form-control" id="cpf" type="text" value="@cliente.Cpf.Numero" disabled readonly />
+                </div>
+            </div>
+            <div class="row flexrow mt-12">
+                <div class="col-sm-4">
+                    <label class="form-label" for="excluido">Excluido:</label>
+                    <input class="form-control" id="excluido" type="text" value="@(cliente.Excluido ? "Sim" : "Não")" disabled readonly />
+                </div>
+            </div>
+            <div class="row flexrow mt-12">
+                <div class="col-sm-4">
+                    <label class="form-label" for="data-exclusao">Data da Exclusão:</label>
+                    <input class="form-control" id="data-exclusao" type="text" value="@(cliente.DataExclusao != null ? cliente.DataExclusao.Value.ToString("dd/MM/YYYY") : "")" disabled readonly />
+                </div>
+            </div>
+        }
+    </form>
+
+    <div class="row flexrow mt-4">
+        <div class="col-sm-12">
+            <span><strong>Data de geração.:</strong></span> @DateTime.Now.ToString("dd/MM/yyyy").
+        </div>
+    </div>
+</body>
+
+</html>
